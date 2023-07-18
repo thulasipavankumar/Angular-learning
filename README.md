@@ -1,4 +1,5 @@
 Angular-learning
+## Angular Architecture
 - Components
 - Templates => Displays of the component
 - Services => 
@@ -9,3 +10,7 @@ Angular-learning
 - One-way Data flow => 
 - Zone.js and change detection => 
 - Rendering Targets
+## New in Angular 14
+- standalone components
+- Typed forms
+- ng completion , specify title direcrtly in the route
