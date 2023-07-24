@@ -43,6 +43,7 @@ Angular-learning
 
 ## Data bindlings & Pipes
 Below lines illustrate the follow of data binding between components and DOM
+
 `Data binding`<br/>
 - Poperty Binding `Component => (properties) => DOM`
   <img [src]='product.imageUrl'>
@@ -56,6 +57,38 @@ Below lines illustrate the follow of data binding between components and DOM
 `pipes`<br/>
 - Transform bound properties before display  {{product.productCode | lowercase }}
 - Built-in pipes: data,number,decimal,json etc
-- custom pipes
 
-## Change Detection
+`custom pipes`<br/>
+```typescript
+import { Pipe, PipeTransform } from "@angular/core";
+
+@Pipe({name:'convertToSpaces'})
+export class convertToSpacesPipe implements PipeTransform{
+    transform(value: string,character: string): string {
+        return value.replace(character," ")
+    }
+}
+```
+The above snippet can be used as pipe e.g.:- `{{ product.productCode | lowercase | convertToSpaces:'-' }}`
+
+## Change Detection(google)
+## Component Lifecycle (onInit,onChanges,onDestroy)
+- A lifecycle hook is an interface
+- we implement to write code that is executed when the life cycle of a component occurs
+
+## Getters and setters (in component classes)
+
+```typescript
+    private _listFilter: string = '';
+
+    get listFilter(): string {
+        return this._listFilter;
+    }
+
+    set listFilter(value: string) {
+        this._listFilter = value;
+    }
+```
+## Nested Components 
+- @Input()  => data from ?
+- @Output() => Event emitter => data from nested component to the container
