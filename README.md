@@ -29,3 +29,33 @@ Angular-learning
   `Metadata`<br/>
   - Extra data for Angular
   - Defined with a decorator
+ 
+
+## Directives, Templates and Interpolation
+
+  `Directives`<br/>
+  - Custom HTML element or attribute used to power up and extend our HTML
+  - Angular also has built-in directives 
+
+  `Interpolation`<br/>
+  - One way data binding from class to template
+  - <h1>{{name}}}<h1>
+
+## Data bindlings & Pipes
+Below lines illustrate the follow of data binding between components and DOM
+`Data binding`<br/>
+- Poperty Binding `Component => (properties) => DOM`
+  <img [src]='product.imageUrl'>
+- Interpolation
+   {{example}}
+- Event binding `DOM => (events) => Component`
+  <button (click='toggleImage()')>
+- Two-Way Binding
+  <input [(ngmodel)]='listFilter'/>    => dont forger to import forms module to use ngmodel
+
+`pipes`<br/>
+- Transform bound properties before display  {{product.productCode | lowercase }}
+- Built-in pipes: data,number,decimal,json etc
+- custom pipes
+
+## Change Detection
