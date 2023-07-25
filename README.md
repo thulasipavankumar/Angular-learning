@@ -163,4 +163,14 @@ Observable
 })
 export class AppModule { }
 ```
+### Routing additional techniques
 
+Reading parameters from a route
+- Snapshot - Read the parameter one time
+- Observable - Read emitted parameters as they change
+- Specified string is the route parameter name
+```typescript
+<a [routerLink]="['/products', product.productId]">
+                  {{ product.productName }}
+ </a>
+```
