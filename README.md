@@ -72,6 +72,7 @@ export class convertToSpacesPipe implements PipeTransform{
 The above snippet can be used as pipe e.g.:- `{{ product.productCode | lowercase | convertToSpaces:'-' }}`
 
 ## Change Detection(google)
+
 ## Component Lifecycle (onInit,onChanges,onDestroy)
 - A lifecycle hook is an interface
 - we implement to write code that is executed when the life cycle of a component occurs
@@ -92,3 +93,25 @@ The above snippet can be used as pipe e.g.:- `{{ product.productCode | lowercase
 ## Nested Components 
 - @Input()  => data from ?
 - @Output() => Event emitter => data from nested component to the container
+
+## Services and Dependency injection
+
+ `Service`<br/>
+  - Registering service ? Root Injector ( available throughout application) | Component Injector (service only availabe to that component and its child nested componenets)
+  - set the `providedIn` property for the service
+```typescript
+@Injectable({
+    providedIn:'root'      //<==  service is availabe through out the application
+})
+export class ProductService {
+  getProducts():IProducts[]{
+}
+}
+```
+## Retrive data using http
+
+Observable 
+- unline an array it doesn't retain items
+- emitted items can be observed over time
+- events => `next`|`error`|`complete`
+
