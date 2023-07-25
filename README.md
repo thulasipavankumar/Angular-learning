@@ -115,3 +115,52 @@ Observable
 - emitted items can be observed over time
 - events => `next`|`error`|`complete`
 
+## Navigation and routing
+
+### How Routing Works
+- Configure a route for each component
+- Define options/actions
+- Tie a route to each option/action
+- Activate the route based on user action
+- Activating a route displays the component's view
+
+```html
+<nav class='navbar navbar-expand navbar-light bg-light'>
+  <a class='navbar-brand'>{{pageTitle}}</a>
+  <ul class='nav nav-pills'>
+    <li><a class='nav-link' routerLinkActive='active' routerLink='/welcome'>Home</a></li>
+    <li><a class='nav-link' routerLinkActive='active' routerLink='/products'>Product List</a></li>
+  </ul>
+  </nav>
+  <div class='container'>
+  <router-outlet></router-outlet>
+  </div>
+```
+
+`app.module.ts` file with routing paths<br/>
+```typescript
+@NgModule({
+  declarations: [
+    AppComponent,
+    ProductListComponent,
+    convertToSpacesPipe,
+    StartComponent,
+    ProductDetailComponent,
+    WelcomeComponent
+  ],
+  imports: [
+    BrowserModule,
+    FormsModule,  // <== may be used for ngmodel (google out)
+    HttpClientModule,
+    RouterModule.forRoot([{path:'products',component:ProductListComponent},
+    {path:'products/:id',component:ProductDetailComponent},
+    {path:'welcome',component:WelcomeComponent},
+    {path:'',redirectTo:'welcome',pathMatch:'full'},
+    {path:'**',redirectTo:'welcome',pathMatch:'full'}
+  ])
+  ],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+```
+
