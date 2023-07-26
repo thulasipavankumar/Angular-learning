@@ -174,3 +174,33 @@ Reading parameters from a route
                   {{ product.productName }}
  </a>
 ```
+`Activating route with a code`
+```typescript
+onBack():void{
+    this.router.navigate(['/products'])
+}
+```
+`protecting routes with gaurds`<br/>
+- can activate => guard navigation to a route 
+- can deactivate => guard navigation from a route 
+- resolve => pre-fetch data before activating a route 
+- canload => prevents asynchronous routing
+```typescript
+export class ProductDetailGuard implements CanActivate {
+
+  constructor(private router: Router) {}
+  
+  canActivate(
+    route: ActivatedRouteSnapshot,
+    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    const id = Number(route.paramMap.get('id'));
+    if (isNaN(id) || id < 1) {
+      alert('Invalid product id');
+      this.router.navigate(['/products']);
+      return false;
+    }
+    return true;
+  }
+
+}
+```
